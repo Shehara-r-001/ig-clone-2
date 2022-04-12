@@ -1,7 +1,16 @@
-import { StyleSheet, Text, View, SafeAreaView, StatusBar } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  SafeAreaView,
+  StatusBar,
+  ScrollView,
+} from 'react-native';
 import React from 'react';
 import Header from '../components/home/Header';
 import Stories from '../components/home/Stories';
+import Post from '../components/home/Post';
+import { posts } from '../data/posts';
 
 const Homepage = () => {
   return (
@@ -9,6 +18,11 @@ const Homepage = () => {
       <StatusBar backgroundColor='#000000' barStyle='light-content' />
       <Header />
       <Stories />
+      <ScrollView>
+        {posts.map((post, index) => (
+          <Post post={post} key={index} />
+        ))}
+      </ScrollView>
     </SafeAreaView>
   );
 };
