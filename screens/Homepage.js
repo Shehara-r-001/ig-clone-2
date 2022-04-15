@@ -11,6 +11,7 @@ import Header from '../components/home/Header';
 import Stories from '../components/home/Stories';
 import Post from '../components/home/Post';
 import { posts } from '../data/posts';
+import BottomNav from '../components/home/BottomNav';
 
 const Homepage = () => {
   return (
@@ -23,6 +24,7 @@ const Homepage = () => {
           <Post post={post} key={index} />
         ))}
       </ScrollView>
+      <BottomNav />
     </SafeAreaView>
   );
 };
