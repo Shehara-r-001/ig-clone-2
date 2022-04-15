@@ -6,7 +6,7 @@ export const posts = [
       'https://img.etimg.com/thumb/msid-90044567,width-650,imgsize-88974,,resizemode-4,quality-100/the-batman.jpg',
     user: users[0].user,
     likes: 129,
-    caption: 'Hell Yeah..',
+    caption: 'Hell Yeah.. Blaaaahh blaaahhh blaaaaahhhhh',
     profilePic: users[0].image,
     comments: [
       {
@@ -24,7 +24,7 @@ export const posts = [
       'https://media.wired.com/photos/5c54ee6a4feec32ca0f590d8/2:1/w_2400,h_1200,c_limit/superman-922909434.jpg',
     user: users[1].user,
     likes: 111,
-    caption: '...........',
+    caption: 'lorem ipsum dolor sit amet',
     profilePic: users[1].image,
     comments: [
       {

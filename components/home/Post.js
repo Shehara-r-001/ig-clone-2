@@ -19,9 +19,56 @@ const Post = ({ post }) => {
       <PostHeader post={post} />
       <PostImage post={post} />
       <PostFooterIcons />
+      <PostFooter post={post} />
     </View>
   );
 };
+
+const PostFooter = ({ post }) => (
+  <View style={{ marginLeft: 15, marginTop: 10, marginRight: 4 }}>
+    <Text style={{ color: 'white' }}>
+      {post.likes.toLocaleString('en')} people likes this..
+    </Text>
+    <View
+      style={{
+        flexDirection: 'row',
+        marginTop: 5,
+        marginRight: 5,
+      }}
+    >
+      <Text style={{ color: 'white', fontWeight: '700' }}>
+        {post.user}{' '}
+        <Text
+          style={{
+            color: 'white',
+            color: '#d9d9d9',
+          }}
+        >
+          {post.caption}
+        </Text>
+      </Text>
+    </View>
+    {!!post.comments.length && (
+      <View>
+        <Text style={{ color: '#bfbfbf', marginTop: 5 }}>
+          View {post.comments.length > 1 ? 'all ' : ''}
+          {post.comments.length}{' '}
+          {post.comments.length > 1 ? 'comments' : 'comment'}
+        </Text>
+      </View>
+    )}
+    <View style={{ marginTop: 5, marginRight: 3 }}>
+      {post.comments.map((comment, index) => (
+        <View key={index} style={{ flexDirection: 'row', marginBottom: 2 }}>
+          <Text style={{ color: 'white', fontWeight: '600' }}>
+            {comment.user}{' '}
+            <Text style={{ color: '#d9d9d9' }}>{comment.comment}</Text>
+          </Text>
+        </View>
+      ))}
+    </View>
+  </View>
+);
 
 const PostFooterIcons = () => (
   <View
