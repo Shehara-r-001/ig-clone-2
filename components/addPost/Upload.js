@@ -1,5 +1,13 @@
-import { View, Text, Image, TextInput, StyleSheet } from 'react-native';
-import React from 'react';
+import {
+  View,
+  Text,
+  Image,
+  TextInput,
+  StyleSheet,
+  Button,
+  Pressable,
+} from 'react-native';
+import React, { useState } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
@@ -8,12 +16,17 @@ const schema = Yup.object().shape({
   caption: Yup.string().max(1500, 'Maximum number of characters reached'),
 });
 
+const placeHolderImage =
+  'https://www.beelights.gr/assets/images/empty-image.png';
+
 const Upload = () => {
+  const [thumbUrl, setThumbUrl] = useState();
   return (
     <Formik
       initialValues={{ caption: '', imageUrl: '' }}
       onSubmit={(values) => console.log(values)}
       validationSchema={schema}
+      validateOnMount={true}
     >
       {({
         handleBlur,
@@ -28,7 +41,7 @@ const Upload = () => {
             <Image
               style={{ width: 100, height: 100, marginTop: 20, marginLeft: 10 }}
               source={{
-                uri: 'https://www.beelights.gr/assets/images/empty-image.png',
+                uri: thumbUrl ? thumbUrl : placeHolderImage,
               }}
             />
           </View>
@@ -42,6 +55,7 @@ const Upload = () => {
             value={values.caption}
           />
           <TextInput
+            onChange={(e) => setThumbUrl(e.nativeEvent.text)}
             placeholder='Enter the image URL..'
             placeholderTextColor='gray'
             style={styles.textInput}
@@ -54,6 +68,31 @@ const Upload = () => {
               {errors.imageUrl}
             </Text>
           )}
+          {/* <Pressable
+            onPress={handleSubmit}
+            disabled={!isValid}
+            style={{
+              width: '50%',
+              backgroundColor: '#e60073',
+              marginTop: 30,
+              height: 30,
+              borderRadius: 5,
+              alignSelf: 'center',
+            }}
+          >
+            <Text
+              style={{
+                textAlign: 'center',
+                color: 'white',
+                paddingVertical: 6,
+                textTransform: 'uppercase',
+                fontSize: 16,
+              }}
+            >
+              Share
+            </Text>
+          </Pressable> */}
+          <Button title='Share' onPress={handleSubmit} disabled={!isValid} />
         </>
       )}
     </Formik>

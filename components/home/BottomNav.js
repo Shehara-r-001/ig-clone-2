@@ -20,7 +20,7 @@ import {
 import { Divider } from 'react-native-elements/dist/divider/Divider';
 import { users } from '../../data/users';
 
-const BottomNav = () => {
+const BottomNav = ({ navigation }) => {
   return (
     <View style={styles.bNavCont}>
       <Divider width={1} orientation='vertical' style={{ marginBottom: 5 }} />
@@ -38,7 +38,7 @@ const BottomNav = () => {
         <TouchableOpacity>
           <SearchIcon size={30} style={styles.icon} />
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.push('AddPostScreen')}>
           <PlusSmIcon size={25} style={[styles.icon, styles.iconBorder]} />
         </TouchableOpacity>
         <TouchableOpacity>

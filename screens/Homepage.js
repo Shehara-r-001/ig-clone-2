@@ -13,7 +13,7 @@ import Post from '../components/home/Post';
 import { posts } from '../data/posts';
 import BottomNav from '../components/home/BottomNav';
 
-const Homepage = () => {
+const Homepage = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar backgroundColor='#000000' barStyle='light-content' />
@@ -24,7 +24,7 @@ const Homepage = () => {
           <Post post={post} key={index} />
         ))}
       </ScrollView>
-      <BottomNav />
+      <BottomNav navigation={navigation} />
     </SafeAreaView>
   );
 };

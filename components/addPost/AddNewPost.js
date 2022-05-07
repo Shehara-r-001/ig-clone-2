@@ -3,18 +3,18 @@ import React from 'react';
 import { ChevronLeftIcon } from 'react-native-heroicons/outline';
 import Upload from './Upload';
 
-const AddNewPost = () => {
+const AddNewPost = ({ navigation }) => {
   return (
     <>
-      <Header />
+      <Header navigation={navigation} />
       <Upload />
     </>
   );
 };
 
-const Header = () => (
+const Header = ({ navigation }) => (
   <View style={styles.container}>
-    <TouchableOpacity>
+    <TouchableOpacity onPress={() => navigation.goBack()}>
       <ChevronLeftIcon size={30} style={{ color: 'white', marginLeft: 10 }} />
     </TouchableOpacity>
     <Text style={styles.headerText}>Add new post</Text>
