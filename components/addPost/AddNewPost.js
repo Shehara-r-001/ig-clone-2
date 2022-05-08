@@ -7,7 +7,7 @@ const AddNewPost = ({ navigation }) => {
   return (
     <>
       <Header navigation={navigation} />
-      <Upload />
+      <Upload navigation={navigation} />
     </>
   );
 };

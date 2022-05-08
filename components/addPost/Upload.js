@@ -10,21 +10,28 @@ import {
 import React, { useState } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import validUrl from 'valid-url';
 
 const schema = Yup.object().shape({
   imageUrl: Yup.string().url().required('Image URL is required'),
-  caption: Yup.string().max(1500, 'Maximum number of characters reached'),
+  caption: Yup.string()
+    .required()
+    .max(1500, 'Maximum number of characters reached'),
 });
 
 const placeHolderImage =
   'https://www.beelights.gr/assets/images/empty-image.png';
 
-const Upload = () => {
+const Upload = ({ navigation }) => {
   const [thumbUrl, setThumbUrl] = useState();
   return (
     <Formik
       initialValues={{ caption: '', imageUrl: '' }}
-      onSubmit={(values) => console.log(values)}
+      onSubmit={(values) => {
+        console.log(values);
+        console.log('Post was created successfully..');
+        navigation.goBack();
+      }}
       validationSchema={schema}
       validateOnMount={true}
     >
@@ -41,7 +48,7 @@ const Upload = () => {
             <Image
               style={{ width: 100, height: 100, marginTop: 20, marginLeft: 10 }}
               source={{
-                uri: thumbUrl ? thumbUrl : placeHolderImage,
+                uri: validUrl.isUri(thumbUrl) ? thumbUrl : placeHolderImage,
               }}
             />
           </View>
