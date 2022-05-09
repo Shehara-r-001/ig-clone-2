@@ -2,17 +2,17 @@ import {
   View,
   Text,
   StyleSheet,
-  Image,
   SafeAreaView,
   StatusBar,
+  Image,
 } from 'react-native';
 import React from 'react';
-import LoginForm from '../components/login/LoginForm';
+import SignupForm from '../components/signup/SignupForm';
 
 const igLogo =
   'https://pngset.com/images/insta-instagram-graphics-art-text-logo-transparent-png-1001130.png';
 
-const Login = ({ navigation }) => {
+const Signup = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar backgroundColor='#000000' barStyle='light-content' />
@@ -22,7 +22,7 @@ const Login = ({ navigation }) => {
           style={styles.ig_Logo}
         />
       </View>
-      <LoginForm navigation={navigation} />
+      <SignupForm navigation={navigation} />
     </SafeAreaView>
   );
 };
@@ -39,4 +39,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Login;
+export default Signup;

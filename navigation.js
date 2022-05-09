@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import Homepage from './screens/Homepage';
 import AddPostScreen from './screens/AddPostScreen';
 import Login from './screens/Login';
+import Signup from './screens/Signup';
 
 const Stack = createStackNavigator();
 
@@ -16,6 +17,7 @@ const SignedInStack = () => (
   <NavigationContainer>
     <Stack.Navigator initialRouteName='Login' screenOptions={screenOptions}>
       <Stack.Screen name='Login' component={Login} />
+      <Stack.Screen name='Signup' component={Signup} />
       <Stack.Screen name='HomeScreen' component={Homepage} />
       <Stack.Screen name='AddPostScreen' component={AddPostScreen} />
     </Stack.Navigator>
